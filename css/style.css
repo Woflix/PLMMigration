@@ -1,0 +1,150 @@
+body {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-family: sans-serif;
+}
+
+div.tableWrapper {
+	margin: 0 auto;
+	width: 90%;
+}
+
+#migration {
+	font-size: 12px;
+	width: 100%;
+}
+
+#enditem {
+	font-size: 12px;
+	width: 100%;
+}
+
+a {
+	border-radius: 2px;
+	text-decoration: none;
+	color: #888888;
+	padding: 4px 4px 4px 4px;
+	transition: color 0.2s, background 0.2s;
+	-moz-transition: color 0.2s, background 0.2s;
+	-webkit-transition: color 0.2s, background 0.2s;
+	-o-transition: color 0.2s, background 0.2s;
+}
+
+a:hover {
+	color: #FFFFFF;
+	background: #888888;
+}
+
+*:focus {
+	outline: 0;
+}
+
+td:focus {
+	background: #EEEEEE;
+}
+
+label {
+	display: block;
+}
+
+input {
+	margin-right: 8px;
+	border: none;
+	height: 35px;
+	width: 300px;
+	text-align: center;
+	font-size: 16px;
+	border: solid #666666 1px;
+	border-radius: 10px;
+	color: #777777
+	transition: background 0.3s, border 0.3s;
+	-moz-transition: background 0.3s, border 0.3s;
+	-webkit-transition: background 0.3s, border 0.3s;
+	-o-transition: background 0.3s, border 0.3s;
+}
+
+input:focus {
+	background: #EEEEEE;
+	border: solid #EEEEEE 1px;
+}
+
+.header {
+	text-align: center;
+	margin: 60px 0px 40px 0px;
+}
+
+.statusWrapper {
+	font-size: 32px;
+	text-align: center;
+	color: #666666;
+	margin: 30px 0px 30px 0px;
+}
+
+.statusUpdated {
+	opacity: 0;
+	transition: opacity 0.7s;
+	-moz-transition: opacity 0.7s;
+	-webkit-transition: opacity 0.7s;
+	-o-transition: opacity 0.7s;
+}
+
+.statusUpdatedShow {
+	opacity: 1 !important;
+}
+
+.statusPushed {
+	opacity: 0;
+	margin-top: -37px;
+	transition: opacity 0.7s;
+	-moz-transition: opacity 0.7s;
+	-webkit-transition: opacity 0.7s;
+	-o-transition: opacity 0.7s;
+}
+
+.statusPushedShow {
+	opacity: 1 !important;
+}
+
+.statusWorking {
+	opacity: 0;
+	margin-top: -37px;
+	transition: opacity 0.7s;
+	-moz-transition: opacity 0.7s;
+	-webkit-transition: opacity 0.7s;
+	-o-transition: opacity 0.7s;
+}
+
+.statusWorkingShow {
+	opacity: 1 !important;
+}
+
+#buttonUpdate {
+	padding: 10px 10px 10px 10px;
+	border: solid #666666 1px;
+	border-radius: 10px;
+	text-decoration: none;
+	color: #666666;
+	transition: color 0.3s, background 0.3s;
+	-moz-transition: color 0.3s, background 0.3s;
+	-webkit-transition: color 0.3s, background 0.3s;
+	-o-transition: color 0.3s, background 0.3s;
+}
+
+#buttonUpdate:hover {
+	background: #666666;
+	color: #FFFFFF;
+}
+
+#migration_filter {
+	margin: 10px 0px 30px 0px;
+	text-align: center;
+	float: none;
+}
+
+#enditem_filter {
+	margin: 10px 0px 30px 0px;
+	text-align: center;
+	float: none;
+}
