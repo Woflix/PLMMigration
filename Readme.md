@@ -8,7 +8,7 @@
 
 ## Information
 
-This is the repository containing the source files for the web application created by Michael Leng during an internship period at the YFJC offices in Kangqiao. This web application and source files is for _YFJC/JCI internal use only_ and _may not_ be distributed freely. This web application is to be used by YFJC/JCI engineers, migration team members, and administrators/schedulers as a tracking tool and migration assistant for the migration of files from the flat file server system to TeamCenter. Please email Michael Leng or Wolfix Cai for more details.
+This is the repository containing the source files for the web application created by Michael Leng during an internship period at the YFJC offices in Kangqiao. This web application and source files is for __YFJC/JCI internal use only__ and __may not__ be distributed freely. This web application is to be used by YFJC/JCI engineers, migration team members, and administrators/schedulers as a tracking tool and migration assistant for the migration of files from the flat file server system to TeamCenter. Please email Michael Leng or Wolfix Cai for more details.
 
 
 ---
