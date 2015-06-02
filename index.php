@@ -11,7 +11,35 @@
 
 		*/
 
-		
+		body {
+			text-align: center;
+		}
+
+		#buttonGo {
+			padding: 20px 20px 20px 20px;
+			border: solid #000000 2px;
+			border-radius: 20px;
+			text-decoration: none;
+			font-size: 28px;
+			color: #000000;
+			transition: color 0.3s, background 0.3s;
+			-moz-transition: color 0.3s, background 0.3s;
+			-webkit-transition: color 0.3s, background 0.3s;
+			-o-transition: color 0.3s, background 0.3s;
+		}
+
+		#buttonGo:hover {
+			background: #000000;
+			color: #FFFFFF;
+		}
+
+		h1 {
+			margin: 150px 0px 30px 0px;
+		}
+
+		h2 {
+			margin: 20px 0px 80px 0px;
+		}
 	</style>
 
 	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
@@ -35,5 +63,7 @@
 	<?php include 'imports/head.php'; ?>
 </head>
 <body>
-	Dash/Log
+	<h1>Dash/Log</h1>
+	<h2>Login and authentication is not yet implemented.</h2>
+	<a href="migrationdash.php" id="buttonGo">Go To Migration Dashboard</a>
 </body>
