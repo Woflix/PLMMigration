@@ -1,13 +1,15 @@
 # Repository for the PLM Migration Project
 
-## For JCI Internal Use Only
+## For YFJC/JCI Internal Use Only
 ## Michael Leng
+
 
 ---
 
 ## Information
 
 This is the repository containing the source files for the web application created by Michael Leng during an internship period at the YFJC offices in Kangqiao. This web application and source files is for _YFJC/JCI internal use only_ and _may not_ be distributed freely. This web application is to be used by YFJC/JCI engineers, migration team members, and administrators/schedulers as a tracking tool and migration assistant for the migration of files from the flat file server system to TeamCenter. Please email Michael Leng or Wolfix Cai for more details.
+
 
 ---
 
@@ -34,6 +36,7 @@ Database information can be changed in the `dataMigration.php` and `dataEnditem.
 
 As you can probably see, it's not a great idea to set this web application up locally - at least for now - as it is still very much in development and can break at any time. There are also some other aspects that need to be setup before the web application will run smoothly on a different local device, and will be added in the future. In the future more information and the databases with sample data will be actually added to the repository to make setting this application up locally and testing much easier.
 
+
 ---
 
 ## Bugs and Broken Things
@@ -43,6 +46,7 @@ This is just a list of things that are either currently buggy or broken and are 
 	+ Inline editing does not push changes to MySQL database
 	+ Refreshing from the database while viewing the enditem dashboard throws errors
 	+ More to be discovered...
+
 
 ---
 
@@ -54,6 +58,7 @@ This is just a list of things that are either currently buggy or broken and are 
 		+ Implement permissions levels
 	+ More to come...
 
+
 ---
 
-# Fin.
+## More to come...
