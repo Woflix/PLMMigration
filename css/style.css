@@ -140,6 +140,19 @@ input:focus {
 	opacity: 1 !important;
 }
 
+.statusError {
+	opacity: 0;
+	margin-top: -37px;
+	transition: opacity 0.7s;
+	-moz-transition: opacity 0.7s;
+	-webkit-transition: opacity 0.7s;
+	-o-transition: opacity 0.7s;
+}
+
+.statusErrorShow {
+	opacity: 1 !important;
+}
+
 /* Need more status here for login */
 
 #sqlError {
