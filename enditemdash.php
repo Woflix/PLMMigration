@@ -6,6 +6,7 @@
 
 	<!--  -=TEMP=-   Styles   -=TEMP=-  -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
 	<style type="text/css">
 		/*
@@ -14,24 +15,7 @@
 
 		*/
 
-		body {
-			text-align: center;
-			margin-top: 60px;
-		}
-
-		h2.programidTitle {
-			margin-top: 30px;
-			margin-bottom: 50px;
-			color: #666666;
-		}
-
-		[id*="actions:"] {
-			text-align: center;
-		}
-
-		[id*="actions:"] a {
-			margin: 0px 2px 0px 2px;
-		}
+		
 	</style>
 
 	<!--  -=TEMP=-   JS   -=TEMP=-  -->
@@ -101,11 +85,14 @@
 					"dom": '<"#enditemTableTop"f><"#enditemTableBottom"t>'
 				});
 				// Show Message \\
-				$('.statusUpdated').addClass("statusUpdatedShow");
+				$('.statusPushed').removeClass("statusPushedShow");
+				setTimeout (function(){
+					$('.statusUpdated').addClass("statusUpdatedShow");
+				}, 300);
 			}, 200);
 			setTimeout (function(){
 				$('.statusUpdated').removeClass("statusUpdatedShow");
-			}, 2500);
+			}, 1500);
 		};
 
 		// Testing \\
@@ -160,9 +147,9 @@
 		?>
 	</div>-->
 	<div class="header">
-		<?php
-		echo "<h2 class=\"programidTitle\">Program ID: <span id=\"scrapeProgramID\">".$_GET["programID"]."</span></h2>";
-		?>
+		<h4 class="loginInfo">Logged in as <span class="loginInfoInline"><?php echo $_GET["user"] ?></span> with <span class="loginInfoInline"><?php echo $_GET["perm"] ?></span> level permissions</h2>
+		<a id="buttonMigration" href="migrationdash.php?user=Michael Leng&amp;perm=Admin">Migration Dashboard</a>
+		<a id="buttonProgramid" href="#">Current Program ID: <?php echo "<span id=\"scrapeProgramID\">".$_GET["programID"]."</span>"; ?></a>
 		<a id="buttonUpdate" onclick="update();" href="#">Update From Database</a>
 	</div>
 	<div class="tableWrapper">
