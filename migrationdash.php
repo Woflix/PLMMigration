@@ -48,7 +48,7 @@
 				"dom": '<"#migrationTableTop"f><"#migrationTableBottom"t>'
 			});
 			// Update in 20 Seconds \\
-			var updater = setTimeout (function(){
+			/*var updater = setTimeout (function(){
 				$('table#migration').load('imports/dataMigration.php', 'update=true');
 				setTimeout (function(){
 					$('#migration').dataTable({
@@ -64,8 +64,8 @@
 				}, 200);
 				setTimeout (function(){
 					$('.statusUpdated').removeClass("statusUpdatedShow");
-				}, 2500);
-			}, 20000);
+				}, 1200);
+			}, 20000);*/
 		});
 
 		// Update Database on update() Call \\
@@ -85,18 +85,19 @@
 			}, 200);
 			setTimeout (function(){
 				$('.statusUpdated').removeClass("statusUpdatedShow");
-			}, 2500);
+			}, 1200);
 		}
 
 		// Listen & Act on Events on Contenteditable <td>'s \\
 		$(function(){
 			$("td[contenteditable=true]").blur(function(){
-				var field_userid = $(this).text();
+				var field_userid = $(this).attr("id");
+				var value = $(this).text();
 				$.post('imports/ajax.php', field_userid + "=" + value, function(data){
 					if(data != ''){
-						$('.statusWorking').addClass("statusWorkingShow");
+						$('.statusPushed').addClass("statusPushedShow");
 						setTimeout (function(){
-							$('.statusWorking').removeClass("statusWorkingShow");
+							$('.statusPushed').removeClass("statusPushedShow");
 						}, 1000);
 						// Other stuff
 					}
