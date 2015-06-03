@@ -46,8 +46,11 @@ As you can probably see, it's not a great idea to set this web application up lo
 This is just a list of things that are either currently buggy or broken and are in line to be fixed.
 
 	+ Inline editing does not push changes to MySQL database
-	+ Refreshing from the database while viewing the enditem dashboard throws errors
 	+ More to be discovered...
+
+This is just a list of things that used to be bugged or broken but have been fixed
+
+	+ [FIXED] Refreshing from the database while viewing the enditem dashboard throws errors
 
 
 ---
@@ -59,6 +62,10 @@ This is just a list of things that are either currently buggy or broken and are 
 	+ Implement login page and authentication
 		+ Implement permissions levels
 	+ More to come...
+
+## Done
+
+	+ Framework for both `migrationdash.php` and `enditemdash.php`
 
 
 ---
