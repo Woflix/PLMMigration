@@ -1,9 +1,13 @@
 body {
 	font-family: sans-serif;
+	text-align: center;
+	font-weight: 300;
+	color: #666666;
 }
 
-h1 {
+h1, h2, h3, h4 {
 	font-family: sans-serif;
+	font-weight: 300;
 }
 
 div.tableWrapper {
@@ -19,6 +23,18 @@ div.tableWrapper {
 #enditem {
 	font-size: 12px;
 	width: 100%;
+}
+
+[id*="programid:"] {
+	text-align: center;
+}
+
+[id*="actions:"] {
+	text-align: center;
+}
+
+[id*="actions:"] a {
+	margin: 0px 2px 0px 2px;
 }
 
 a {
@@ -47,9 +63,12 @@ td:focus {
 
 label {
 	display: block;
+	color: #777777;
+	pointer-events: none;
 }
 
 input {
+	pointer-events: auto !important;
 	margin-right: 8px;
 	border: none;
 	height: 35px;
@@ -72,7 +91,7 @@ input:focus {
 
 .header {
 	text-align: center;
-	margin: 60px 0px 40px 0px;
+	margin: 30px 0px 25px 0px;
 }
 
 .statusWrapper {
@@ -80,6 +99,7 @@ input:focus {
 	text-align: center;
 	color: #666666;
 	margin: 30px 0px 30px 0px;
+	font-weight: 300;
 }
 
 .statusUpdated {
@@ -120,8 +140,16 @@ input:focus {
 	opacity: 1 !important;
 }
 
-#buttonUpdate {
+/* Need more status here for login */
+
+#sqlError {
+	margin-top: 30px;
+	color: #A67171;
+}
+
+#buttonUpdate, #buttonMigration, #buttonProgramid {
 	padding: 10px 10px 10px 10px;
+	margin: 0px 5px 0px 5px;
 	border: solid #666666 1px;
 	border-radius: 10px;
 	text-decoration: none;
@@ -132,7 +160,11 @@ input:focus {
 	-o-transition: color 0.3s, background 0.3s;
 }
 
-#buttonUpdate:hover {
+#buttonProgramid {
+	cursor: default;
+}
+
+#buttonUpdate:hover, #buttonMigration:hover, #buttonProgramid:hover {
 	background: #666666;
 	color: #FFFFFF;
 }
@@ -147,4 +179,25 @@ input:focus {
 	margin: 10px 0px 30px 0px;
 	text-align: center;
 	float: none;
+}
+
+.loginInfo {
+	font-weight: 300;
+	margin: 0px 0px 35px 0px;
+}
+
+.loginInfoInline {
+	background: #EEEEEE;
+	border-radius: 5px;
+	padding: 5px 5px 5px 5px;
+	cursor: default;
+	transition: background 0.3s, color 0.3s;
+	-moz-transition: background 0.3s, color 0.3s;
+	-webkit-transition: background 0.3s, color 0.3s;
+	-o-transition: background 0.3s, color 0.3s;
+}
+
+.loginInfoInline:hover {
+	background: #666666;
+	color: white;
 }
