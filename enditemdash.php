@@ -134,18 +134,36 @@
 				return false;
 			}
 		}
+
+		function openHelpOverlay(){
+			$('.helpOverlay').addClass('helpOverlayShowDisplay');
+			setTimeout (function(){
+				$('.helpOverlay').addClass('helpOverlayShow');
+			}, 100);	
+		}
+
+		function closeHelpOverlay(){
+			$('.helpOverlay').removeClass('helpOverlayShow');
+			setTimeout (function(){
+				$('.helpOverlay').removeClass('helpOverlayShowDisplay');
+			}, 400);
+		}
 	</script>
 </head>
 <body>
-	<!--<div>
-		End/Dash
-		<h2>
-			Debug:
-		</h2>
-		<?php
-		//echo "Program ID: ".$_GET["programID"];
-		?>
-	</div>-->
+	<div class="help">
+		<h4 class="helpButton" onclick="openHelpOverlay();">Help</h4>
+	</div>
+	<div class="helpOverlay" onclick="closeHelpOverlay();">
+		<div class="helpContent">
+			<h2>Help</h2>
+			<h3>Searching Tables</h3>
+			<p>To search a table, just type your search query into the search bar above the table. You may type search terms for multiple columns in the search bar simultaneously, and it will search all columns for matching data. For example, you can type in "John Smith 1234567" to the search bar, and rows that contain either John Smith and/or 1234567 will be filtered out. You can also click the column headers to sort data by either ascending or descending order.</p>
+			<h3>Editing Tables</h3>
+			<p>To edit tables, just click the specific cell that you would like to update. You will enter editing mode and will be able to type freely into the cell. Click outside the cell, into a different cell, press "Tab", or press "Enter" to finish editing that cell and push the updates to the MySQL database.</p>
+			<h4 id="buttonHelpClose">Click anywhere to close.</h4>
+		</div>
+	</div>
 	<div class="header">
 		<h4 class="loginInfo">Logged in as <span class="loginInfoInline"><?php echo $_GET["user"] ?></span> with <span class="loginInfoInline"><?php echo $_GET["perm"] ?></span> level permissions</h2>
 		<a id="buttonMigration" href="migrationdash.php?user=Michael Leng&amp;perm=Admin">Migration Dashboard</a>
