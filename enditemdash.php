@@ -41,7 +41,7 @@
 		$(document).ready(function(){
 			// Initializing DataTables \\
 			enditemTable = $('#enditem').dataTable({
-				"scrollY": '55%',
+				"scrollY": '50%',
 				"scrollCollapse": true,
 				"paging": false,
 				"info": false,
@@ -78,7 +78,7 @@
 			setTimeout (function(){
 				$('#enditem').dataTable({
 					"destroy": true,
-					"scrollY": '55%',
+					"scrollY": '50%',
 					"scrollCollapse": true,
 					"paging": false,
 					"info": false,
@@ -197,7 +197,7 @@
 				</tr>
 			</thead>
 
-			<tfoot id="enditemTableFoot">
+			<!--<tfoot id="enditemTableFoot">
 				<tr>
 					<th>
 						Actions
@@ -218,7 +218,7 @@
 						Jobs Folder
 					</th>
 				</tr>
-			</tfoot>
+			</tfoot>-->
 			<tbody id="enditemTableBody">
 				<?php include 'imports/dataEnditem.php' ?>
 			</tbody>
@@ -227,13 +227,13 @@
 	<div class="footer">
 		<div class="statusWrapper">
 			<div class="statusUpdated">
-				Updated From Database.
+				<h4>Updated From Database.</h4>
 			</div>
 			<div class="statusWorking">
-				Working...
+				<h4>Working...</h4>
 			</div>
 			<div class="statusPushed">
-				Pushed To Database.
+				<h4>Pushed To Database.</h4>
 			</div>
 		</div>
 	</div>
