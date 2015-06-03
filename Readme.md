@@ -69,6 +69,7 @@ This is just a list of things that used to be bugged or broken but have been fix
 
 	+ [DONE] Framework for both `migrationdash.php` and `enditemdash.php`
 	+ [DONE] Finish inline editing
+	+ [DONE] Add basic on-page documentation and help
 
 ## Scrapped
 	
