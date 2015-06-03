@@ -45,6 +45,8 @@ As you can probably see, it's not a great idea to set this web application up lo
 
 This is just a list of things that are either currently buggy or broken and are in line to be fixed.
 
+	+ Authentication doesn't work
+		+ Username input into the `#usernameField` field is not passed to the `authMain.php` file properly
 	+ More to be discovered...
 
 This is just a list of things that used to be bugged or broken but have been fixed
@@ -60,6 +62,7 @@ This is just a list of things that used to be bugged or broken but have been fix
 	+ Add new page with upload and Program ID + Program Name inputs
 	+ Implement login page and authentication
 		+ Implement permissions levels
+		+ Implement user authentication on page change with URL variables
 	+ More to come...
 
 ## Done
