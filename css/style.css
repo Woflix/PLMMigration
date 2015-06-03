@@ -98,11 +98,15 @@ input:focus {
 	margin: 30px 0px 25px 0px;
 }
 
+.footer {
+	margin-top: -10px;
+}
+
 .statusWrapper {
 	font-size: 32px;
 	text-align: center;
 	color: #666666;
-	margin: 30px 0px 30px 0px;
+	margin: 0px 0px 30px 0px;
 	font-weight: 300;
 }
 
@@ -118,22 +122,9 @@ input:focus {
 	opacity: 1 !important;
 }
 
-.statusPushed {
-	opacity: 0;
-	margin-top: -37px;
-	transition: opacity 0.7s;
-	-moz-transition: opacity 0.7s;
-	-webkit-transition: opacity 0.7s;
-	-o-transition: opacity 0.7s;
-}
-
-.statusPushedShow {
-	opacity: 1 !important;
-}
-
 .statusWorking {
 	opacity: 0;
-	margin-top: -37px;
+	margin-top: -80px;
 	transition: opacity 0.7s;
 	-moz-transition: opacity 0.7s;
 	-webkit-transition: opacity 0.7s;
@@ -141,6 +132,19 @@ input:focus {
 }
 
 .statusWorkingShow {
+	opacity: 1 !important;
+}
+
+.statusPushed {
+	opacity: 0;
+	margin-top: -79px;
+	transition: opacity 0.7s;
+	-moz-transition: opacity 0.7s;
+	-webkit-transition: opacity 0.7s;
+	-o-transition: opacity 0.7s;
+}
+
+.statusPushedShow {
 	opacity: 1 !important;
 }
 
