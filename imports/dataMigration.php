@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 $sql = "SELECT programid, programname, assignedto, start, end FROM programs";
 $result = $conn->query($sql);
 
-$counter = 0;
+$counter = 1;
 
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
