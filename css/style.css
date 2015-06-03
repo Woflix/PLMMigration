@@ -177,13 +177,34 @@ input:focus {
 	-o-transition: color 0.3s, background 0.3s;
 }
 
-#buttonProgramid {
-	cursor: default;
-}
-
 #buttonUpdate:hover, #buttonMigration:hover, #buttonProgramid:hover {
 	background: #666666;
 	color: #FFFFFF;
+}
+
+#buttonProgramid {
+	cursor: default;
+	width: auto;
+}
+
+#buttonHelpClose {
+	cursor: default;
+	width: 190px;
+	margin: 30px auto 0px auto;
+	padding: 10px 10px 10px 10px;
+	border: solid #FFFFFF 1px;
+	border-radius: 10px;
+	text-decoration: none;
+	color: #FFFFFF;
+	transition: color 0.3s, background 0.3s;
+	-moz-transition: color 0.3s, background 0.3s;
+	-webkit-transition: color 0.3s, background 0.3s;
+	-o-transition: color 0.3s, background 0.3s;
+}
+
+#buttonHelpClose:hover {
+	background: #FFFFFF;
+	color: #000000;
 }
 
 #migration_filter {
@@ -217,4 +238,73 @@ input:focus {
 .loginInfoInline:hover {
 	background: #666666;
 	color: white;
+}
+
+.help {
+	position: fixed;
+	height: 55px;
+	width: 70px;
+	bottom: 0px;
+	left: 0px;
+}
+
+.helpButton {
+	position: fixed;
+	border: solid #666666 1px;
+	border-radius: 5px;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 0px 15px 15px;
+	bottom: 0px;
+	left: 0px;
+	cursor: pointer;
+	transition: background 0.3s, color 0.3s;
+	-moz-transition: background 0.3s, color 0.3s;
+	-webkit-transition: background 0.3s, color 0.3s;
+	-o-transition: background 0.3s, color 0.3s;
+}
+
+.helpButton:hover {
+	background: #666666;
+	color: white;
+}
+
+.helpOverlay {
+	opacity: 0;
+	display: none;
+	position: fixed;
+	z-index: 3;
+	background: rgba(0,0,0,0.7);
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	color: white;
+	transition: opacity 0.3s;
+	-moz-transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+	-o-transition: opacity 0.3s;
+}
+
+.helpOverlayShow {
+	opacity: 1;
+}
+
+.helpOverlayShowDisplay {
+	display: block;
+}
+
+.helpContent {
+	height: 80%;
+	margin: 10% 20% 10% 20%;
+	overflow: scroll;
+}
+
+span.code {
+	font-family: monospace;
+	font-size: inherit;
+	padding: 2px 4px 2px 4px;
+	background: #EEEEEE !important;
+	border-radius: 5px;
 }
