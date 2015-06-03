@@ -24,6 +24,14 @@
 			margin-bottom: 50px;
 			color: #666666;
 		}
+
+		[id*="actions:"] {
+			text-align: center;
+		}
+
+		[id*="actions:"] a {
+			margin: 0px 2px 0px 2px;
+		}
 	</style>
 
 	<!--  -=TEMP=-   JS   -=TEMP=-  -->
@@ -57,7 +65,9 @@
 			});
 			// Update in 20 Seconds \\
 			var updater = setTimeout (function(){
-				$('table#enditem').load('imports/dataEnditem.php?programID=' + $getJSON("test.php", 'update=true'));
+				var scrapeFrom = document.getElementById("scrapeProgramID");
+    			var scrapeData = scrapeFrom.textContent;
+				$('table#enditem').load('imports/dataEnditem.php?programID=' + scrapeData);
 				setTimeout (function(){
 					$('#enditem').dataTable({
 						"destroy": true,
@@ -78,7 +88,9 @@
 
 		// Update Database on update() Call \\
 		function update() {
-			$('table#enditem').load('imports/dataEnditem.php', 'update=true');
+			var scrapeFrom = document.getElementById("scrapeProgramID");
+    		var scrapeData = scrapeFrom.textContent;
+			$('table#enditem').load('imports/dataEnditem.php?programID=' + scrapeData);
 			setTimeout (function(){
 				$('#enditem').dataTable({
 					"destroy": true,
@@ -94,7 +106,11 @@
 			setTimeout (function(){
 				$('.statusUpdated').removeClass("statusUpdatedShow");
 			}, 2500);
-		}
+		};
+
+		function alertC(programid) {
+			alert("This is a test: " + programid);
+		};
 
 		// Listen & Act on Events on Contenteditable <td>'s \\
 		$(function(){
@@ -134,6 +150,9 @@
 			<thead id="enditemTableHead">
 				<tr>
 					<th>
+						Actions
+					</th>
+					<th>
 						Original Name
 					</th>
 					<th>
@@ -153,6 +172,9 @@
 
 			<tfoot id="enditemTableFoot">
 				<tr>
+					<th>
+						Actions
+					</th>
 					<th>
 						Original Name
 					</th>
