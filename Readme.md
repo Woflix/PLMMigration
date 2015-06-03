@@ -53,6 +53,7 @@ This is just a list of things that used to be bugged or broken but have been fix
 
 	+ [FIXED] Refreshing from the database while viewing the enditem dashboard throws errors
 	+ [FIXED] Inline editing does not push changes to MySQL database
+	+ [FIXED] Inline table buttons in `enditemdash.php` do not work and throw errors
 
 
 ---
