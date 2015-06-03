@@ -4,6 +4,7 @@
 	<title>Add New Program</title>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<style type="text/css">
 		/*
 
