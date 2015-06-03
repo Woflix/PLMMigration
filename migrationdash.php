@@ -90,20 +90,37 @@
 
 		// Listen & Act on Events on Contenteditable <td>'s \\
 		$(function(){
-			$("td[contenteditable=true]").blur(function(){
+			$('td[contenteditable=true]').blur(function(){
 				var field_userid = $(this).attr("id");
 				var value = $(this).text();
-				$.post('imports/ajax.php', field_userid + "=" + value, function(data){
+				$.post('imports/ajaxMigration.php', field_userid + "=" + value, function(data){
 					if(data != ''){
 						$('.statusPushed').addClass("statusPushedShow");
 						setTimeout (function(){
 							$('.statusPushed').removeClass("statusPushedShow");
 						}, 1000);
-						// Other stuff
 					}
 				});
 			});
 		});
+
+		// Listener for Enter Key \\
+		var fld = document.getElementsByTagName('td[contenteditable=true]');
+		if (fld.addEventListener){
+			fld.addEventListener("keydown", keydown, false);
+		} else if (fld.attatchEvent) {
+			document.attachEvent("onkeydown", keydown);
+		} else {
+			document.onkeydown = keydown;
+		}
+
+		// Check if Key is Enter \\
+		function keydown(e){
+			if (e.keyCode == 13) {
+				$('td[contenteditable=true]').blur();
+				return false;
+			}
+		}
 	</script>
 	<?php include 'imports/head.php'; ?>
 </head>
