@@ -64,7 +64,7 @@
 				"dom": '<"#enditemTableTop"f><"#enditemTableBottom"t>'
 			});
 			// Update in 20 Seconds \\
-			var updater = setTimeout (function(){
+			/*var updater = setTimeout (function(){
 				var scrapeFrom = document.getElementById("scrapeProgramID");
     			var scrapeData = scrapeFrom.textContent;
 				$('table#enditem').load('imports/dataEnditem.php?programID=' + scrapeData);
@@ -83,7 +83,7 @@
 				setTimeout (function(){
 					$('.statusUpdated').removeClass("statusUpdatedShow");
 				}, 2500);
-			}, 20000);
+			}, 20000);*/
 		});
 
 		// Update Database on update() Call \\
@@ -108,6 +108,7 @@
 			}, 2500);
 		};
 
+		// Testing \\
 		function alertC(programid) {
 			alert("This is a test: " + programid);
 		};
@@ -115,18 +116,37 @@
 		// Listen & Act on Events on Contenteditable <td>'s \\
 		$(function(){
 			$("td[contenteditable=true]").blur(function(){
-				var field_userid = $(this).text();
-				$.post('imports/ajax.php', field_userid + "=" + value, function(data){
+				var field_userid = $(this).attr("id");
+				var value = $(this).text();
+				$.post('imports/ajaxEnditem.php', field_userid + "=" + value, function(data){
 					if(data != ''){
-						$('.statusWorking').addClass("statusWorkingShow");
+						$('.statusPushed').addClass("statusPushedShow");
 						setTimeout (function(){
-							$('.statusWorking').removeClass("statusWorkingShow");
+							$('.statusPushed').removeClass("statusPushedShow");
 						}, 1000);
 						// Other stuff
 					}
 				});
 			});
 		});
+
+		// Listener for Enter Key \\
+		var fld = document.getElementsByTagName("td[contenteditable=true]");
+		if (fld.addEventListener){
+			fld.addEventListener("keydown", keydown, false);
+		} else if (fld.attatchEvent) {
+			document.attachEvent("onkeydown", keydown);
+		} else {
+			document.onkeydown = keydown;
+		}
+
+		// Check if Key is Enter \\
+		function keydown(e){
+			if (e.keyCode == 13) {
+				$("td[contenteditable=true]").blur();
+				return false;
+			}
+		}
 	</script>
 </head>
 <body>
