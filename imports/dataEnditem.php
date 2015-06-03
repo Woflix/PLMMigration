@@ -20,7 +20,7 @@ $counter = 0;
 
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
-		echo "<tr><td id=\"originalname:".$counter."\" contenteditable=\"true\">".$row["originalname"]."</td><td id=\"renamedto:".$counter."\" contenteditable=\"true\">".$row["renamedto"]."</td><td id=\"latestrev:".$counter."\" contenteditable=\"true\">".$row["latestrev"]."</td><td id=\"datatype:".$counter."\" contenteditable=\"true\">".$row["datatype"]."</td><td id=\"jobsfolder:".$counter."\"><a href=\"".$row["jobsfolder"]."\" title=\"Download from: ".$row["jobsfolder"]."\" target=\"_blank\">Download</a></td></tr>";
+		echo "<tr><td id=\"actions:".$counter."\"><a href=\"#\" onclick=\"alertC(\" \");\">A</a><a href=\"#\" onclick=\"alertC(\" \");\">B</a><a href=\"#\" onclick=\"alertC(\" \");\">C</a></td><td id=\"originalname:".$counter."\" contenteditable=\"true\">".$row["originalname"]."</td><td id=\"renamedto:".$counter."\" contenteditable=\"true\">".$row["renamedto"]."</td><td id=\"latestrev:".$counter."\" contenteditable=\"true\">".$row["latestrev"]."</td><td id=\"datatype:".$counter."\" contenteditable=\"true\">".$row["datatype"]."</td><td id=\"jobsfolder:".$counter."\"><a href=\"".$row["jobsfolder"]."\" title=\"Download from: ".$row["jobsfolder"]."\" target=\"_blank\">Download</a></td></tr>";
 		$counter = $counter + 1;
 	}
 } else {
