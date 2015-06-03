@@ -67,6 +67,18 @@
 		.loginFooter {
 			margin-top: 80px;
 		}
+
+		select.roleHidden {
+			background: transparent;
+			padding-left: 12px;
+			font-size: 16px;
+			width: 300px;
+			height: 40px;
+			text-align: center;
+			border: solid #666666 1px;
+			border-radius: 15px;
+			-webkit-appearance: none;
+		}
 	</style>
 
 	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
@@ -109,10 +121,22 @@
 		<h2>Login and authentication is not yet implemented.</h2>
 	</div>
 	<form id="login">
-		<p id="formTitle">Username</p>
-		<input type="text" id="usernameField"/>
-		<p id="formTitle">Password</p>
-		<input type="password" id="passwordField"/>
+		<p class="formTitle">Username</p>
+		<input type="text" name="username" id="usernameField"/>
+		<p class="formTitle">Password</p>
+		<input type="password" name="password" id="passwordField"/>
+		<p class="formTitle roleHidden">Select Role<br/> (When authentication is finished,<br/> this menu, or some options may<br/> not show up)</p>
+		<select class="roleHidden">
+			<option id="optionEngineer">
+				Engineer
+			</option>
+			<option id="optionMigration">
+				Migration
+			</option>
+			<option id="optionAdmin">
+				Admin
+			</option>
+		</select>
 		<a href="#" id="buttonGo" onclick="auth();">Login</a>
 		<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Go to Migration Dashboard (DEBUG)</a>
 	</form>
