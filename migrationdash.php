@@ -39,7 +39,7 @@
 		$(document).ready(function(){
 			// Initializing DataTables \\
 			migrationTable = $('#migration').dataTable({
-				"scrollY": '55%',
+				"scrollY": '50%',
 				"scrollCollapse": true,
 				"paging": false,
 				"info": false,
@@ -72,7 +72,7 @@
 			setTimeout (function(){
 				$('#migration').dataTable({
 					"destroy": true,
-					"scrollY": '55%',
+					"scrollY": '50%',
 					"scrollCollapse": true,
 					"paging": false,
 					"info": false,
@@ -185,7 +185,7 @@
 				</tr>
 			</thead>
 
-			<tfoot id="migrationTableFoot">
+			<!--<tfoot id="migrationTableFoot">
 				<tr>
 					<th>
 						Program ID
@@ -203,7 +203,7 @@
 						End Date
 					</th>
 				</tr>
-			</tfoot>
+			</tfoot>-->
 			<tbody id="migrationTableBody">
 				<?php include 'imports/dataMigration.php' ?>
 			</tbody>
@@ -212,13 +212,13 @@
 	<div class="footer">
 		<div class="statusWrapper">
 			<div class="statusUpdated">
-				Updated From Database.
+				<h4>Updated From Database.</h4>
 			</div>
 			<div class="statusWorking">
-				Working...
+				<h4>Working...</h4>
 			</div>
 			<div class="statusPushed">
-				Pushed To Database.
+				<h4>Pushed To Database.</h4>
 			</div>
 		</div>
 	</div>
