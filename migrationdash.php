@@ -6,6 +6,7 @@
 
 	<!--  -=TEMP=-   Styles   -=TEMP=-  -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
 	<style type="text/css">
 		/*
@@ -13,9 +14,6 @@
 			This is temporary // For ease of editing
 
 		*/
-		[id*="programid:"] {
-			text-align: center;
-		}
 	</style>
 
 	<!--  -=TEMP=-   JS   -=TEMP=-  -->
@@ -81,12 +79,15 @@
 					"dom": '<"#migrationTableTop"f><"#migrationTableBottom"t>'
 				});
 				// Show Message \\
-				$('.statusUpdated').addClass("statusUpdatedShow");
+				$('.statusPushed').removeClass("statusPushedShow");
+				setTimeout (function(){
+					$('.statusUpdated').addClass("statusUpdatedShow");
+				}, 300);
 			}, 200);
 			setTimeout (function(){
 				$('.statusUpdated').removeClass("statusUpdatedShow");
-			}, 1200);
-		}
+			}, 1500);
+		};
 
 		// Listen & Act on Events on Contenteditable <td>'s \\
 		$(function(){
@@ -95,10 +96,13 @@
 				var value = $(this).text();
 				$.post('imports/ajaxMigration.php', field_userid + "=" + value, function(data){
 					if(data != ''){
-						$('.statusPushed').addClass("statusPushedShow");
+						$('.statusUpdated').removeClass("statusUpdatedShow");
+						setTimeout (function(){
+							$('.statusPushed').addClass("statusPushedShow");
+						}, 300);
 						setTimeout (function(){
 							$('.statusPushed').removeClass("statusPushedShow");
-						}, 1000);
+						}, 1300);
 					}
 				});
 			});
@@ -126,7 +130,9 @@
 </head>
 <body>
 	<div class="header">
+		<h4 class="loginInfo">Logged in as <span class="loginInfoInline"><?php echo $_GET["user"] ?></span> with <span class="loginInfoInline"><?php echo $_GET["perm"] ?></span> level permissions</h2>
 		<a id="buttonUpdate" onclick="update();" href="#">Update From Database</a>
+		<a id="buttonUpdate" href="newprogramdash.php">Add Item</a>
 	</div>
 	<div class="tableWrapper">
 		<table id="migration" width="100%">
