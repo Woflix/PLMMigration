@@ -66,5 +66,5 @@
 <body>
 	<h1>Dash/New</h1>
 	<h2>Adding a new program has not yet been implemented.</h2>
-	<a href="migrationdash.php" id="buttonGo">Go To Migration Dashboard</a>
+	<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Go To Migration Dashboard</a>
 </body>
