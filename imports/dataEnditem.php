@@ -24,23 +24,26 @@ if ($result->num_rows > 0) {
 		$counter = $counter + 4;
 	}
 } else {
-	echo "No data could be retrieved.";
+	echo "<h2 id=\"sqlError\">Error: No data could be retrieved.</h2>";
 }
 $conn->close();
 ?>
 <script type="text/javascript">
 	$(function(){
-		$('td[contenteditable=true]').blur(function(){
-			var field_userid = $(this).attr("id");
-			var value = $(this).text();
-			$.post('imports/ajaxMigration.php', field_userid + "=" + value, function(data){
-				if(data != ''){
-					$('.statusPushed').addClass("statusPushedShow");
-					setTimeout (function(){
-						$('.statusPushed').removeClass("statusPushedShow");
-					}, 1000);
-				}
+			$('td[contenteditable=true]').blur(function(){
+				var field_userid = $(this).attr("id");
+				var value = $(this).text();
+				$.post('imports/ajaxEnditem.php', field_userid + "=" + value, function(data){
+					if(data != ''){
+						$('.statusUpdated').removeClass("statusUpdatedShow");
+						setTimeout (function(){
+							$('.statusPushed').addClass("statusPushedShow");
+						}, 300);
+						setTimeout (function(){
+							$('.statusPushed').removeClass("statusPushedShow");
+						}, 1300);
+					}
+				});
 			});
 		});
-	});
 </script>
