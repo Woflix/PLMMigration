@@ -19,11 +19,11 @@
 		#buttonGo {
 			display: block;
 			padding: 10px 10px 10px 10px;
-			border: solid #000000 1px;
+			border: solid #666666 1px;
 			border-radius: 15px;
 			text-decoration: none;
 			font-size: 16px;
-			color: #000000;
+			color: #666666;
 			width: 280px;
 			margin: 30px auto 0px auto;
 			transition: color 0.3s, background 0.3s;
@@ -33,7 +33,7 @@
 		}
 
 		#buttonGo:hover {
-			background: #000000;
+			background: #666666;
 			color: #FFFFFF;
 		}
 
