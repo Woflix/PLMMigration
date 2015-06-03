@@ -83,10 +83,10 @@
 				setTimeout (function(){
 					$('.statusUpdated').addClass("statusUpdatedShow");
 				}, 300);
-			}, 200);
+			}, 500);
 			setTimeout (function(){
 				$('.statusUpdated').removeClass("statusUpdatedShow");
-			}, 1500);
+			}, 1800);
 		};
 
 		// Listen & Act on Events on Contenteditable <td>'s \\

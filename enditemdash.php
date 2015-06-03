@@ -89,10 +89,10 @@
 				setTimeout (function(){
 					$('.statusUpdated').addClass("statusUpdatedShow");
 				}, 300);
-			}, 200);
+			}, 500);
 			setTimeout (function(){
 				$('.statusUpdated').removeClass("statusUpdatedShow");
-			}, 1500);
+			}, 1800);
 		};
 
 		// Testing \\
