@@ -45,27 +45,31 @@ As you can probably see, it's not a great idea to set this web application up lo
 
 This is just a list of things that are either currently buggy or broken and are in line to be fixed.
 
-	+ Inline editing does not push changes to MySQL database
 	+ More to be discovered...
 
 This is just a list of things that used to be bugged or broken but have been fixed
 
 	+ [FIXED] Refreshing from the database while viewing the enditem dashboard throws errors
+	+ [FIXED] Inline editing does not push changes to MySQL database
 
 
 ---
 
 ## To-Do
 
-	+ Finish inline editing
-	+ Add ability to add new entries to the migration dashboard's connected database: `migration`
+	+ Add new page with upload and Program ID + Program Name inputs
 	+ Implement login page and authentication
 		+ Implement permissions levels
 	+ More to come...
 
 ## Done
 
-	+ Framework for both `migrationdash.php` and `enditemdash.php`
+	+ [DONE] Framework for both `migrationdash.php` and `enditemdash.php`
+	+ [DONE] Finish inline editing
+
+## Scrapped
+	
+	+ [SCRAPPED] Add ability to add new entries to the migration dashboard's connected database: `migration`
 
 
 ---
