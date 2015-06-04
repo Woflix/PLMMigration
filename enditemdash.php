@@ -94,47 +94,9 @@
 				$('.statusUpdated').removeClass("statusUpdatedShow");
 			}, 1800);
 		};
-
-		// Testing \\
-		function alertC(programid) {
-			alert("This is a test: " + programid);
-		};
-
-		// Listen & Act on Events on Contenteditable <td>'s \\
-		$(function(){
-			$("td[contenteditable=true]").blur(function(){
-				var field_userid = $(this).attr("id");
-				var value = $(this).text();
-				$.post('imports/ajaxEnditem.php', field_userid + "=" + value, function(data){
-					if(data != ''){
-						$('.statusPushed').addClass("statusPushedShow");
-						setTimeout (function(){
-							$('.statusPushed').removeClass("statusPushedShow");
-						}, 1000);
-						// Other stuff
-					}
-				});
-			});
-		});
-
-		// Listener for Enter Key \\
-		var fld = document.getElementsByTagName("td[contenteditable=true]");
-		if (fld.addEventListener){
-			fld.addEventListener("keydown", keydown, false);
-		} else if (fld.attatchEvent) {
-			document.attachEvent("onkeydown", keydown);
-		} else {
-			document.onkeydown = keydown;
-		}
-
-		// Check if Key is Enter \\
-		function keydown(e){
-			if (e.keyCode == 13) {
-				$("td[contenteditable=true]").blur();
-				return false;
-			}
-		}
-
+	</script>
+	<!--<?php //include 'imports/intermediaryBlurListener.php' ?>-->
+	<script type="text/javascript">
 		function openHelpOverlay(){
 			$('.helpOverlay').addClass('helpOverlayShowDisplay');
 			setTimeout (function(){
@@ -180,45 +142,43 @@
 						Actions
 					</th>
 					<th>
+						Status
+					</th>
+					<th>
 						Original Name
 					</th>
 					<th>
 						Renamed To
 					</th>
 					<th>
+						Epic PN
+					</th>
+					<th>
 						Latest Rev
 					</th>
 					<th>
-						Data Type
+						Prop Name
 					</th>
 					<th>
-						Jobs Folder
+						Description
+					</th>
+					<th>
+						Catia Rel
+					</th>
+					<th>
+						CAD Env
+					</th>
+					<th>
+						Part Type
+					</th>
+					<th>
+						Last Modified Date
+					</th>
+					<th>
+						Job Folder
 					</th>
 				</tr>
 			</thead>
-
-			<!--<tfoot id="enditemTableFoot">
-				<tr>
-					<th>
-						Actions
-					</th>
-					<th>
-						Original Name
-					</th>
-					<th>
-						Renamed To
-					</th>
-					<th>
-						Latest Rev
-					</th>
-					<th>
-						Data Type
-					</th>
-					<th>
-						Jobs Folder
-					</th>
-				</tr>
-			</tfoot>-->
 			<tbody id="enditemTableBody">
 				<?php include 'imports/dataEnditem.php' ?>
 			</tbody>
