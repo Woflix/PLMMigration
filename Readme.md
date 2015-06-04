@@ -45,8 +45,10 @@ As you can probably see, it's not a great idea to set this web application up lo
 
 This is just a list of things that are either currently buggy or broken and are in line to be fixed.
 
-	+ Authentication doesn't work
+	+ Authentication kind of doesn't work
 		+ Username input into the `#usernameField` field is not passed to the `authMain.php` file properly
+	+ % cleaned field in `migrationdash.php` throws errors.
+	+ ItemQty field does not display proper data
 	+ More to be discovered...
 
 This is just a list of things that used to be bugged or broken but have been fixed
