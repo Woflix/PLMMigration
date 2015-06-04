@@ -98,11 +98,9 @@
 		*/
 
 		// Authentication Function \\
-		function auth(){
-			var field_user = $('#usernameField').attr("id");
-			var value = $('#usernameField').val();
-			alert(value);
-			$.post('imports/authMain.php', "username=" + value, function(data){
+		function authed(){
+			var details = $('#usernameField').val()+":"+$('#passwordField').val();
+			/*$.post('imports/authMain.php', "username=" + value, function(data){
 				if(data != ''){
 					$('.statusWorking').addClass("statusWorkingShow");
 					setTimeout (function(){
@@ -110,7 +108,13 @@
 					}, 1000);
 					$('.debug').load('imports/authMain.php');
 				}
-			});
+			});*/
+			window.location.replace('imports/authIntermediary.php?details='+details)
+		}
+
+		function auth(){
+			var details = $('#usernameField').val()+":"+$('#passwordField').val();
+			$('.auth').load('imports/authIntermediary.php?details='+details);
 		}
 	</script>
 	<?php include 'imports/head.php'; ?>
@@ -125,18 +129,11 @@
 		<input type="text" name="username" id="usernameField"/>
 		<p class="formTitle">Password</p>
 		<input type="password" name="password" id="passwordField"/>
-		<p class="formTitle roleHidden">Select Role<br/> (When authentication is finished,<br/> this menu, or some options may<br/> not show up)</p>
-		<select class="roleHidden">
-			<option id="optionEngineer">
-				Engineer
-			</option>
-			<option id="optionMigration">
-				Migration
-			</option>
-			<option id="optionAdmin">
-				Admin
-			</option>
-		</select>
+		<!-- Uncomment below for multiple roles -->
+		<!--<p class="formTitle roleHidden">Select Role<br/> (When authentication is finished,<br/> this menu, or some options may<br/> not show up)</p>-->
+		<div class="auth">
+			
+		</div>
 		<a href="#" id="buttonGo" onclick="auth();">Login</a>
 		<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Go to Migration Dashboard (DEBUG)</a>
 	</form>
@@ -147,8 +144,6 @@
 			</div>
 			<div class="statusError">
 				<h4>Unable to log in. Please ensure your username and password are correct.</h4>
-			</div>
-			<div class="debug">
 			</div>
 		</div>
 	</div>
