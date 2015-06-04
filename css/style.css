@@ -250,6 +250,7 @@ input:focus {
 	width: 70px;
 	bottom: 0px;
 	left: 0px;
+	z-index: 2;
 }
 
 .helpButton {
