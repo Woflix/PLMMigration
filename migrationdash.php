@@ -88,26 +88,9 @@
 				$('.statusUpdated').removeClass("statusUpdatedShow");
 			}, 1800);
 		};
-
-		// Listen & Act on Events on Contenteditable <td>'s \\
-		$(function(){
-			$('td[contenteditable=true]').blur(function(){
-				var field_userid = $(this).attr("id");
-				var value = $(this).text();
-				$.post('imports/ajaxMigration.php', field_userid + "=" + value, function(data){
-					if(data != ''){
-						$('.statusUpdated').removeClass("statusUpdatedShow");
-						setTimeout (function(){
-							$('.statusPushed').addClass("statusPushedShow");
-						}, 300);
-						setTimeout (function(){
-							$('.statusPushed').removeClass("statusPushedShow");
-						}, 1300);
-					}
-				});
-			});
-		});
-
+	</script>
+	<?php include 'imports/intermediaryBlurListener.php' ?>
+	<script type="text/javascript">
 		// Listener for Enter Key \\
 		var fld = document.getElementsByTagName('td[contenteditable=true]');
 		if (fld.addEventListener){
@@ -170,40 +153,32 @@
 					<th>
 						Program ID
 					</th>
-					<th>
-						Program Name
+					<th style="width: 200px;">
+						Name
 					</th>
 					<th>
 						Assigned To
 					</th>
-					<th>
-						Start Date
+					<th style="width: 80px;">
+						 Actual Start Date
+					</th>
+					<th style="width: 80px;">
+						Actual End Date
 					</th>
 					<th>
-						End Date
+						Status
+					</th>
+					<th>
+						Item Qty
+					</th>
+					<th>
+						% Cleaned
+					</th>
+					<th style="width: 200px;">
+						Notes
 					</th>
 				</tr>
 			</thead>
-
-			<!--<tfoot id="migrationTableFoot">
-				<tr>
-					<th>
-						Program ID
-					</th>
-					<th>
-						Program Name
-					</th>
-					<th>
-						Assigned To
-					</th>
-					<th>
-						Start Date
-					</th>
-					<th>
-						End Date
-					</th>
-				</tr>
-			</tfoot>-->
 			<tbody id="migrationTableBody">
 				<?php include 'imports/dataMigration.php' ?>
 			</tbody>
