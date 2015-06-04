@@ -25,6 +25,10 @@ div.tableWrapper {
 	width: 100%;
 }
 
+thead tr th {
+	font-size: 12px !important;
+}
+
 [id*="programid:"] {
 	text-align: center;
 }
@@ -168,6 +172,11 @@ input:focus {
 	color: #A67171;
 }
 
+#sqlGood {
+	margin-top: 30px;
+	color: #76AB74;
+}
+
 #buttonUpdate, #buttonMigration, #buttonProgramid {
 	padding: 10px 10px 10px 10px;
 	margin: 0px 5px 0px 5px;
@@ -240,6 +249,23 @@ input:focus {
 }
 
 .loginInfoInline:hover {
+	background: #666666;
+	color: white;
+}
+
+#loginUserRole {
+	background: #EEEEEE;
+	border-radius: 5px;
+	padding: 5px 5px 5px 5px;
+	color: #666666;
+	cursor: default;
+	transition: background 0.3s, color 0.3s;
+	-moz-transition: background 0.3s, color 0.3s;
+	-webkit-transition: background 0.3s, color 0.3s;
+	-o-transition: background 0.3s, color 0.3s;
+}
+
+#loginUserRole:hover {
 	background: #666666;
 	color: white;
 }
