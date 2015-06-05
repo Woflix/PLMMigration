@@ -1,4 +1,7 @@
-<!--
+<?php
+/* 
+	Authentication Permission Levels
+
 	Engineer:
 		+ Read migrationdash.php
 		+ Access and write to newprogramdash.php
@@ -11,27 +14,33 @@
 	Admin:
 		+ Read all files
 		+ Write all files
--->
+*/
 
-<?php
+// Get Details from URL Variable \\
 $detailsLocal = $_GET["details"];
 $detailsStrip = strip_tags(trim($detailsLocal));
 
+// Check for ':' \\
 if (strpos($detailsStrip, ':') !== FALSE) {
+	// Split Into Two Variables \\
 	$splitData = explode(':', $detailsStrip);
 	$passwordLocal = $splitData[1];
 	$usernameLocal = $splitData[0];
 
+	// SQL Server Data \\
 	include 'configData.php';
 
+	// Create New Connection \\
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
+	// SQL Query \\
 	$sql = "SELECT userid, username, password, role FROM users WHERE username = \"$usernameLocal\"";
 	$result = $conn->query($sql);
 
+	// Check if Query Returned Rows \\
 	if ($result->num_rows > 0) {
 		// Uncomment for multiple roles
 		/*if ($result->num_rows > 1) {
@@ -48,8 +57,10 @@ if (strpos($detailsStrip, ':') !== FALSE) {
 			}
 			echo "</select>";
 		} else {*/
+		// If Returned 1 Row \\
 		if ($result->num_rows == 1) { // This second if was for multiple roles, but didn't feel like removing it in case we need that feature later
 			while ($row = $result->fetch_assoc()) {
+				// Permission Validation \\
 				if ($row["username"] == $usernameLocal && $row["password"] == $passwordLocal) {
 					if ($row["role"] == "eng") {
 						$userRole = "Engineer";
@@ -69,6 +80,7 @@ if (strpos($detailsStrip, ':') !== FALSE) {
 	} else {
 		echo "<h2 id=\"sqlError\">Error: You have entered an invalid username or password.</h2>";
 	}
+	// Close Connection \\
 	$conn->close();
 } else {
 	echo "<h2 id=\"sqlError\">Error: You have entered a space in either the username or password field.</h2>";
