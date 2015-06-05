@@ -19,5 +19,5 @@
 		});
 	});
 </script>
-<?php echo $_GET["user"]; ?>
+<!--<?php //echo $_GET["user"]; ?>-->
 <!-- END INTERMEDIARYBLURLISTENER.PHP -->
