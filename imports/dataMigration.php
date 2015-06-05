@@ -11,34 +11,64 @@ if ($conn2->connect_error) {
 	die("Connection failed: " . $conn2->connect_error);
 }
 
-$sqlProgram = "SELECT program.programid, program.name, program.assignedto, program.actual_start_date, program.actual_complete_date, program.status, program.notes, program.id, enditem.statuscl FROM program LEFT JOIN enditem ON program.programID=enditem.programID";
-$sqlEnditem = "SELECT status, programid, id FROM enditem";
+$conn3 = new mysqli($servername, $username, $password, $dbname);
+if ($conn3->connect_error) {
+	die("Connection failed: " . $conn3->connect_error);
+}
+
+$sqlProgram = "SELECT programid, name, assignedto, actual_start_date, actual_complete_date, status, notes, id FROM program";
+$sqlEnditem1 = "SELECT count(jobfolder), programid FROM `enditem` WHERE status = 'Completed' GROUP by programid;";
+$sqlEnditem2 = "SELECT count(jobfolder), programid FROM `enditem` WHERE status = '' GROUP by programid;";
 $result = $conn1->query($sqlProgram);
-$resultEnditem = $conn2->query($sqlEnditem);
+$resultEnditem1 = $conn2->query($sqlEnditem1);
+$resultEnditem2 = $conn3->query($sqlEnditem2);
 
 $counter = 2;
-$itemCounter = 0;
 $localProgramidPrevious = 0000000000;
+$cleanCompleted = array();
+$cleanPercentage = array();
+$cleanTotal = array();
 
-function checkCount($currentProgramid) {
-	if ($resultEnditem->num_rows > 0) {
-		while ($rowEnditem = $resultEnditem->fetch_assoc()) {
-			if ($currentProgramid == $rowEnditem["programid"]) {
-				$itemCounter = $itemCounter + 1;
-			}
-		}
-		echo $itemCounter;
+if ($resultEnditem1->num_rows > 0) {
+	while ($rowEnditem1 = $resultEnditem1->fetch_assoc()) {
+		$cleanCompleted[$rowEnditem1["programid"]] = $rowEnditem1["count(jobfolder)"];
 	}
 }
+
+// DEBUG -> print_r($cleanCompleted);
+
+if ($resultEnditem2->num_rows > 0) {
+	while ($rowEnditem2 = $resultEnditem2->fetch_assoc()) {
+		$cleanTotal[$rowEnditem2["programid"]] = $cleanCompleted[$rowEnditem2["programid"]]+$rowEnditem2["count(jobfolder)"];
+		$cleanPercentage[$rowEnditem2["programid"]] = $cleanCompleted[$rowEnditem2["programid"]]/($rowEnditem2["count(jobfolder)"]+$cleanCompleted[$rowEnditem2["programid"]]);
+	}
+}
+
+// DEBUG -> print_r($cleanPercentage);
 
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$localProgramidCurrent = $row["programid"];
 		if ($localProgramidCurrent == $localProgramidPrevious) {
 		} else {
-			echo "<tr><td id=\"programid:".$row["id"]."\" tabindex=".$counter."><a href=\"enditemdash.php?programID=".$row["programid"]."&user=Michael Leng&perm=Admin\" target=\"_blank\">".$row["programid"]."</a></td><td id=\"name:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+1).">".$row["name"]."</td><td id=\"assignedto:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+2).">".$row["assignedto"]."</td><td id=\"actual_start_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+3).">".$row["actual_start_date"]."</td><td id=\"actual_complete_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+4).">".$row["actual_complete_date"]."</td><td id=\"status:".$row["id"]."\" tabindex=".($counter+5).">".$row["status"]."</td><td id=\"itemqty:".$row["id"]."\" tabindex=".($counter+6).">"."ITEMQTY"."</td><td id=\"percentcleaned:".$row["id"]."\" tabindex=".($counter+7).">";
-			checkCount($row["programid"]);/*$row["statuscl"]*/
-			echo "</td><td id=\"notes:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+8).">".$row["notes"]."</td></tr>";
+			$programidCurrent = $row["programid"];
+			echo "<tr><td id=\"programid:".$row["id"]."\" tabindex=".$counter."><a href=\"enditemdash.php?programID=".$row["programid"]."&user=Michael Leng&perm=Admin\" target=\"_blank\">".$row["programid"]."</a></td><td id=\"name:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+1).">".$row["name"]."</td><td id=\"assignedto:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+2).">".$row["assignedto"]."</td><td id=\"actual_start_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+3).">".$row["actual_start_date"]."</td><td id=\"actual_complete_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+4).">".$row["actual_complete_date"]."</td><td id=\"status:".$row["id"]."\" tabindex=".($counter+5).">".$row["status"]."</td><td id=\"itemqty:".$row["id"]."\" tabindex=".($counter+6).">";
+
+			if (!empty($cleanTotal[$programidCurrent])) {
+				echo $cleanTotal[$programidCurrent];
+			} else {
+				echo 0;
+			}
+
+			echo "</td><td id=\"percentcleaned:".$row["id"]."\" tabindex=".($counter+7).">";
+
+			if (!empty($cleanPercentage[$programidCurrent])) {
+				echo round($cleanPercentage[$programidCurrent], 3, PHP_ROUND_HALF_UP);
+			} else {
+				echo 0;
+			}
+
+			echo "%</td><td id=\"notes:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+8).">".$row["notes"]."</td></tr>";
 			$counter = $counter + 9;
 		}
 		$localProgramidPrevious = $row["programid"];
@@ -48,6 +78,7 @@ if ($result->num_rows > 0) {
 }
 $conn1->close();
 $conn2->close();
+$conn3->close();
 ?>
 <script type="text/javascript">
 	$(function(){
