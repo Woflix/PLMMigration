@@ -62,10 +62,13 @@ This is just a list of things that used to be bugged or broken but have been fix
 
 ## To-Do
 
-	+ Add new page with upload and Program ID + Program Name inputs
+	+ Add new page with upload and CAD file path, Program ID, and Catia release user input fields
 	+ Implement login page and authentication
 		+ Implement permissions levels
 		+ Implement user authentication on page change with URL variables
+	+ Add actions to inline buttons in `enditemdash.php`
+	+ Add functionality to download button
+
 	+ More to come...
 
 ## Done
