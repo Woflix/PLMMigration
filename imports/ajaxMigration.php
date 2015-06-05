@@ -1,4 +1,5 @@
 <?php
+// Updates Database from Table Input for #migration \\
 if(!empty($_POST)){
 	include "config.php";
 	foreach($_POST as $field_name => $val){
