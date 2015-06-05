@@ -339,3 +339,67 @@ span.code {
 	background: #EEEEEE !important;
 	border-radius: 5px;
 }
+
+#buttonGo {
+	display: block;
+	padding: 10px 10px 10px 10px;
+	border: solid #666666 1px;
+	border-radius: 15px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #666666;
+	width: 280px;
+	margin: 30px auto 0px auto;
+	transition: color 0.3s, background 0.3s;
+	-moz-transition: color 0.3s, background 0.3s;
+	-webkit-transition: color 0.3s, background 0.3s;
+	-o-transition: color 0.3s, background 0.3s;
+}
+
+#buttonGo:hover {
+	background: #666666;
+	color: #FFFFFF;
+}
+
+#login {
+	text-align: center;
+}
+
+#usernameField {
+	display: block;
+	margin: 20px 0px 20px 0px;
+	width: 300px;
+	height: 40px;
+	border-radius: 15px;
+	margin: 0 auto;
+}
+
+#passwordField {
+	display: block;
+	margin: 20px 0px 20px 0px;
+	width: 300px;
+	height: 40px;
+	border-radius: 15px;
+	margin: 0 auto;
+}
+
+.statusError {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.loginFooter {
+	margin-top: 80px;
+}
+
+select {
+	background: transparent;
+	padding-left: 12px;
+	font-size: 16px;
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	border: solid #666666 1px;
+	border-radius: 15px;
+	-webkit-appearance: none;
+}
