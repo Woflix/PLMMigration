@@ -1,3 +1,7 @@
+/* Start */
+
+/* General */
+
 body {
 	font-family: sans-serif;
 	text-align: center;
@@ -8,37 +12,6 @@ body {
 h1, h2, h3, h4 {
 	font-family: sans-serif;
 	font-weight: 300;
-}
-
-div.tableWrapper {
-	margin: 0 auto;
-	width: 90%;
-}
-
-#migration {
-	font-size: 12px;
-	width: 100%;
-}
-
-#enditem {
-	font-size: 12px;
-	width: 100%;
-}
-
-thead tr th {
-	font-size: 12px !important;
-}
-
-[id*="programid:"] {
-	text-align: center;
-}
-
-[id*="actions:"] {
-	text-align: center;
-}
-
-[id*="actions:"] a {
-	margin: 0px 2px 0px 2px;
 }
 
 a {
@@ -69,6 +42,10 @@ th {
 	font-weight: 500 !important;
 }
 
+thead tr th {
+	font-size: 12px !important;
+}
+
 label {
 	display: block;
 	color: #777777;
@@ -97,6 +74,37 @@ input:focus {
 	border: solid #EEEEEE 1px;
 }
 
+/* Table */
+
+div.tableWrapper {
+	margin: 0 auto;
+	width: 90%;
+}
+
+#migration {
+	font-size: 12px;
+	width: 100%;
+}
+
+#enditem {
+	font-size: 12px;
+	width: 100%;
+}
+
+[id*="programid:"] {
+	text-align: center;
+}
+
+[id*="actions:"] {
+	text-align: center;
+}
+
+[id*="actions:"] a {
+	margin: 0px 2px 0px 2px;
+}
+
+/* Header and Footer */
+
 .header {
 	text-align: center;
 	margin: 30px 0px 25px 0px;
@@ -106,9 +114,15 @@ input:focus {
 	margin: 60px 0px 50px 0px;
 }
 
+.loginHeader {
+	margin: 100px 0px 60px 0px;
+}
+
 .footer {
 	margin-top: -10px;
 }
+
+/* Status Message */
 
 .statusWrapper {
 	font-size: 32px;
@@ -158,7 +172,8 @@ input:focus {
 
 .statusError {
 	opacity: 0;
-	margin-top: -37px;
+	width: 70%;
+	margin: -37px auto 0px auto;
 	transition: opacity 0.7s;
 	-moz-transition: opacity 0.7s;
 	-webkit-transition: opacity 0.7s;
@@ -169,7 +184,7 @@ input:focus {
 	opacity: 1 !important;
 }
 
-/* Need more status here for login */
+/* SQL Message */
 
 #sqlError {
 	margin-top: 30px;
@@ -180,6 +195,8 @@ input:focus {
 	margin-top: 30px;
 	color: #76AB74;
 }
+
+/* Form and Button */
 
 #buttonUpdate, #buttonMigration, #buttonProgramid {
 	padding: 10px 10px 10px 10px;
@@ -236,6 +253,50 @@ input:focus {
 	float: none;
 }
 
+#buttonGo {
+	display: block;
+	padding: 10px 10px 10px 10px;
+	border: solid #666666 1px;
+	border-radius: 15px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #666666;
+	width: 280px;
+	margin: 30px auto 0px auto;
+	transition: color 0.3s, background 0.3s;
+	-moz-transition: color 0.3s, background 0.3s;
+	-webkit-transition: color 0.3s, background 0.3s;
+	-o-transition: color 0.3s, background 0.3s;
+}
+
+#buttonGo:hover {
+	background: #666666;
+	color: #FFFFFF;
+}
+
+#usernameField, #passwordField, #cadfilepathField, #programidField {
+	display: block;
+	margin: 20px 0px 20px 0px;
+	width: 300px;
+	height: 40px;
+	border-radius: 15px;
+	margin: 0 auto;
+}
+
+select {
+	background: transparent;
+	padding-left: 12px;
+	font-size: 16px;
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	border: solid #666666 1px;
+	border-radius: 15px;
+	-webkit-appearance: none;
+}
+
+/* Login */
+
 .loginInfo {
 	font-weight: 300;
 	margin: 0px 0px 35px 0px;
@@ -273,6 +334,16 @@ input:focus {
 	background: #666666;
 	color: white;
 }
+
+#login {
+	text-align: center;
+}
+
+.loginFooter {
+	margin-top: 80px;
+}
+
+/* Help Modal */
 
 .help {
 	position: fixed;
@@ -335,6 +406,8 @@ input:focus {
 	margin: 7% 20% 6% 20%;
 }
 
+/* Inline Code */
+
 span.code {
 	font-family: monospace;
 	font-size: inherit;
@@ -343,57 +416,4 @@ span.code {
 	border-radius: 5px;
 }
 
-#buttonGo {
-	display: block;
-	padding: 10px 10px 10px 10px;
-	border: solid #666666 1px;
-	border-radius: 15px;
-	text-decoration: none;
-	font-size: 16px;
-	color: #666666;
-	width: 280px;
-	margin: 30px auto 0px auto;
-	transition: color 0.3s, background 0.3s;
-	-moz-transition: color 0.3s, background 0.3s;
-	-webkit-transition: color 0.3s, background 0.3s;
-	-o-transition: color 0.3s, background 0.3s;
-}
-
-#buttonGo:hover {
-	background: #666666;
-	color: #FFFFFF;
-}
-
-#login {
-	text-align: center;
-}
-
-#usernameField, #passwordField, #cadfilepathField, #programidField {
-	display: block;
-	margin: 20px 0px 20px 0px;
-	width: 300px;
-	height: 40px;
-	border-radius: 15px;
-	margin: 0 auto;
-}
-
-.statusError {
-	width: 70%;
-	margin: 0 auto;
-}
-
-.loginFooter {
-	margin-top: 80px;
-}
-
-select {
-	background: transparent;
-	padding-left: 12px;
-	font-size: 16px;
-	width: 300px;
-	height: 40px;
-	text-align: center;
-	border: solid #666666 1px;
-	border-radius: 15px;
-	-webkit-appearance: none;
-}
+/* Fin */
