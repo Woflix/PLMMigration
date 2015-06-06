@@ -77,6 +77,7 @@
 				}, 2900);
 			}
 
+			// Variables for Roles \\
 			var admin = "Admin";
 			var migration = "Migration";
 			var engineer = "Engineer";
