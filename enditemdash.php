@@ -98,6 +98,7 @@
 				}, 2000);
 			}
 		</script>
+		<?php include 'imports/head.php'; ?>
 	</head>
 	<body>
 		<!-- Help Modal -->
