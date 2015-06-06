@@ -179,9 +179,6 @@
 			<div class="statusUpdated">
 				<h4>Updated From Database.</h4>
 			</div>
-			<div class="statusPushed">
-				<h4>Pushed To Database.</h4>
-			</div>
 		</div>
 	</body>
 </html>
