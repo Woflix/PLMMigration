@@ -185,6 +185,7 @@
 			<a href="#" id="buttonGo" onclick="updateTxt();">Submit</a>
 			<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Return to Migration Dashboard</a>
 		</form>
+		<!-- Status Messages -->
 		<div class="footer">
 			<div class="statusError" id="newItemErrorUnknown">
 				<h4>Error: Unknown error.</h4>
