@@ -10,7 +10,7 @@ if(!empty($_POST)){
 		$user_id = $split_data[1];
 		$field_name = $split_data[0];
 		if(!empty($user_id) && !empty($field_name) && !empty($val)){
-			mysql_query("UPDATE enditems SET $field_name = '$val' WHERE ID = $user_id") or mysql_error();
+			mysql_query("UPDATE enditem SET $field_name = '$val' WHERE ID = $user_id") or mysql_error();
 			echo "Updated";
 		} else {
 			echo "Invalid Requests";
