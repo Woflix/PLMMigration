@@ -42,7 +42,7 @@
 			$(document).ready(function(){
 				// Initializing DataTables \\
 				enditemTable = $('#enditem').dataTable({
-					"scrollY": '70%',
+					"paging": false,
 					"scrollX": true,
 					"scrollCollapse": true,
 					"paging": false,
@@ -80,7 +80,7 @@
 				setTimeout (function(){
 					$('#enditem').dataTable({
 						"destroy": true,
-						"scrollY": '70%',
+						"paging": false,
 						"scrollX": true,
 						"scrollCollapse": true,
 						"paging": false,
@@ -95,7 +95,7 @@
 				}, 500);
 				setTimeout (function(){
 					$('.statusUpdated').removeClass("statusUpdatedShow");
-				}, 1800);
+				}, 2000);
 			}
 		</script>
 	</head>
@@ -176,16 +176,11 @@
 		</div>
 		<!-- Status Messages -->
 		<div class="footer">
-			<div class="statusWrapper">
-				<div class="statusUpdated">
-					<h4>Updated From Database.</h4>
-				</div>
-				<div class="statusWorking">
-					<h4>Working...</h4>
-				</div>
-				<div class="statusPushed">
-					<h4>Pushed To Database.</h4>
-				</div>
+			<div class="statusUpdated">
+				<h4>Updated From Database.</h4>
+			</div>
+			<div class="statusPushed">
+				<h4>Pushed To Database.</h4>
 			</div>
 		</div>
 	</body>
