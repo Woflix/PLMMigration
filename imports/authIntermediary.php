@@ -63,26 +63,26 @@ if (strpos($detailsStrip, ':') !== FALSE) {
 				// Permission Validation \\
 				if ($row["username"] == $usernameLocal && $row["password"] == $passwordLocal) {
 					if ($row["role"] == "eng") {
-						$userRole = "Engineer";
+						$userRole = "engineer";
 					} else if ($row["role"] == "mig") {
-						$userRole = "Migration";
+						$userRole = "migration";
 					} else if ($row["role"] == "admin") {
-						$userRole = "Admin";
+						$userRole = "admin";
 					} else {
 						$userRole = "[Error: Your credentials in our database have been corrupted. Please contact an administrator.";
 					}
-					echo "<h2 id=\"sqlGood\">You have successfully logged in with <span id=\"loginUserRole\">".$userRole."</span> level permissions.</h2>";
+					echo "<script type=\"text/javascript\">showGoodSuccess(".$userRole.");</script>";
 				} else {
-					echo "<h2 id=\"sqlError\">Error: You have entered an invalid username and password combination.</h2>";
+					echo "<script type=\"text/javascript\">showErrorCombination();</script>";
 				}
 			}	
 		}
 	} else {
-		echo "<h2 id=\"sqlError\">Error: You have entered an invalid username or password.</h2>";
+		echo "<script type=\"text/javascript\">showErrorCredentials();</script>";
 	}
 	// Close Connection \\
 	$conn->close();
 } else {
-	echo "<h2 id=\"sqlError\">Error: You have entered a space in either the username or password field.</h2>";
+	echo "<script type=\"text/javascript\">showErrorSpace();</script>";
 }
 ?>
