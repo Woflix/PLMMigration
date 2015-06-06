@@ -13,7 +13,7 @@
 					}, 300);
 					setTimeout (function(){
 						$('.statusPushed').removeClass("statusPushedShow");
-					}, 1300);
+					}, 1700);
 				}
 			});
 		});
