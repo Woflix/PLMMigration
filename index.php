@@ -36,6 +36,64 @@
 
 			*/
 
+			// Hide All Status Messages \\
+			function removeAllStatus() {
+				$('#loginErrorCombination').removeClass('statusErrorShow');
+				$('#loginErrorCredentials').removeClass('statusErrorShow');
+				$('#loginErrorSpace').removeClass('statusErrorShow');
+				$('#loginGoodSuccess').removeClass('statusGoodShow');
+			}
+
+			// Show Unknown Error Message \\
+			function showErrorCombination() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#loginErrorCombination').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#loginErrorCombination').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			// Show Unknown Error Message \\
+			function showErrorCredentials() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#loginErrorCredentials').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#loginErrorCredentials').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			// Show Unknown Error Message \\
+			function showErrorSpace() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#loginErrorSpace').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#loginErrorSpace').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			var admin = "Admin";
+			var migration = "Migration";
+			var engineer = "Engineer";
+
+			// Show Unknown Error Message \\
+			function showGoodSuccess(role) {
+				removeAllStatus();
+				$('#loginUserRole').append(role);
+				setTimeout (function(){
+					$('#loginGoodSuccess').addClass('statusGoodShow');
+				}, 600);
+				setTimeout (function(){
+					$('#loginGoodSuccess').removeClass("statusGoodShow");
+					$('#loginUserRole').empty();
+				}, 2900);
+			}
+
 			// Authentication Function \\
 			function authed(){
 				var details = $('#usernameField').val()+":"+$('#passwordField').val();
@@ -97,13 +155,17 @@
 		</form>
 		<!-- Status Messages -->
 		<div class="footer loginFooter">
-			<div class="statusWrapper">
-				<div class="statusWorking">
-					<h4>Authenticating</h4>
-				</div>
-				<div class="statusError">
-					<h4>Unable to log in. Please ensure your username and password are correct.</h4>
-				</div>
+			<div class="statusError" id="loginErrorCombination">
+				<h4>Error: You have entered an invalid username and password combination.</h4>
+			</div>
+			<div class="statusError" id="loginErrorCredentials">
+				<h4>Error: You have entered an invalid username or password.</h4>
+			</div>
+			<div class="statusError" id="loginErrorSpace">
+				<h4>Error: You have entered a space in either the username or password field.</h4>
+			</div>
+			<div class="statusGood" id="loginGoodSuccess">
+				<h4>You have successfully logged in with <span id="loginUserRole"></span> level permissions.</h4>
 			</div>
 		</div>
 	</body>
