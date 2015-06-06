@@ -91,8 +91,10 @@
 				}, 600);
 				setTimeout (function(){
 					$('#loginGoodSuccess').removeClass("statusGoodShow");
-					$('#loginUserRole').empty();
 				}, 2900);
+				setTimeout (function(){
+					$('#loginUserRole').empty();
+				}, 3400);
 			}
 
 			// Authentication Function \\
