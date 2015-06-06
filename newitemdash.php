@@ -36,6 +36,85 @@
 
 			*/
 
+			// Hide All Status Messages \\
+			function removeAllStatus() {
+				$('#newItemErrorUnknown').removeClass('statusErrorShow');
+				$('#newItemErrorNumbers').removeClass('statusErrorShow');
+				$('#newItemErrorAddress').removeClass('statusErrorShow');
+				$('#newItemErrorValues').removeClass('statusErrorShow');
+				$('#newItemGoodSuccess').removeClass('statusGoodShow');
+			}
+
+			/*var statusMessages = ["errorUnkown", "errorNumbers", "errorAddress", "errorValues", "goodSuccess"];
+
+			for (var i = 0; i < statusMessages.length; i++) {
+				window["show"+statusMessages[i]] = function() {
+					removeAllStatus();
+					setTimeout (function(){
+						$("newItem"+statusMessages[i]).addClass('statusErrorShow');
+						console.log("newItem"+statusMessages[i]);
+					}, 600);
+					setTimeout (function(){
+						$("newItem"+statusMessages[i]).removeClass('statusErrorShow');
+					}, 2900);
+				}
+			};*/
+
+			// Show Unknown Error Message \\
+			function showErrorUnknown() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#newItemErrorUnknown').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#newItemErrorUnknown').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			// Show Numbers Error Message \\
+			function showErrorNumbers() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#newItemErrorNumbers').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#newItemErrorNumbers').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			// Show Address Error Message \\
+			function showErrorAddress() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#newItemErrorAddress').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#newItemErrorAddress').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			// Show Values Error Message \\
+			function showErrorValues() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#newItemErrorValues').addClass('statusErrorShow');
+				}, 600);
+				setTimeout (function(){
+					$('#newItemErrorValues').removeClass("statusErrorShow");
+				}, 2900);
+			}
+
+			// Show Success Message \\
+			function showGoodSuccess() {
+				removeAllStatus();
+				setTimeout (function(){
+					$('#newItemGoodSuccess').addClass('statusGoodShow');
+				}, 600);
+				setTimeout (function(){
+					$('#newItemGoodSuccess').removeClass("statusGoodShow");
+				}, 2900);
+			}
+
 			// Update .txt File \\
 			function updateTxt(){
 				var cadfilepathData = $('#cadfilepathField').val();
@@ -45,33 +124,18 @@
 				if (cadfilepathData !== '' && programidData !== '' && catiaData !== '') {
 					if (cadfilepathData.substring(0, 18) == "\\\\a-cgqsu04\\design") {
 						if (/\D/.test(programidData) == true) {
-							$('.auth').append('<h2 id="sqlError">Error: You may only enter numbers into the Program ID field.</h2>');
-							setTimeout (function(){
-								$('.auth').empty();
-							}, 2500);
-						} else if (/\D/.test(programidData) == false) {	
-		    				testInfo = cadfilepathData+"~"+programidData+"~"+catiaData;
-		    				$('.auth').load('imports/updateTxt.php?info='+testInfo);
-		    				setTimeout (function(){
-								$('.auth').empty();
-							}, 2500);
+							showErrorNumbers();
+						} else if (/\D/.test(programidData) == false) {
+							testInfo = cadfilepathData+"~"+programidData+"~"+catiaData;
+							$('.auth').load('imports/updateTxt.php?info='+testInfo);
 						} else {
-							$('.auth').append('<h2 id="sqlError">Error: Unknown error.</h2>');
-							setTimeout (function(){
-								$('.auth').empty();
-							}, 2500);
+							showErrorUnknown();
 						}
 					} else {
-						$('.auth').append('<h2 id="sqlError">Error: The CAD file address must start with \'\\\\a-cgqsu04\\design\'.</h2>');
-						setTimeout (function(){
-							$('.auth').empty();
-						}, 2500);
+						showErrorAddress();
 					}
 				} else {
-					$('.auth').append('<h2 id="sqlError">Error: You must provide valid values for all fields.</h2>');
-					setTimeout (function(){
-						$('.auth').empty();
-					}, 2500);
+					showErrorValues();
 				};
 			}
 		</script>
@@ -121,5 +185,22 @@
 			<a href="#" id="buttonGo" onclick="updateTxt();">Submit</a>
 			<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Return to Migration Dashboard</a>
 		</form>
+		<div class="footer">
+			<div class="statusError" id="newItemErrorUnknown">
+				<h4>Error: Unknown error.</h4>
+			</div>
+			<div class="statusError" id="newItemErrorNumbers">
+				<h4>Error: You may only enter numbers into the Program ID field.</h4>
+			</div>
+			<div class="statusError" id="newItemErrorAddress">
+				<h4>Error: The CAD file address must start with '\\a-cgqsu04\design'.</h4>
+			</div>
+			<div class="statusError" id="newItemErrorValues">
+				<h4>Error: You must provide valid values for all fields.</h4>
+			</div>
+			<div class="statusGood" id="newItemGoodSuccess">
+				<h4>Successfully updated joblist.txt</h4>
+			</div>
+		</div>
 	</body>
 </html>
