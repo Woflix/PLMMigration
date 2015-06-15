@@ -113,6 +113,9 @@
 				setTimeout (function(){
 					$('#newItemGoodSuccess').removeClass("statusGoodShow");
 				}, 2900);
+				$('#cadfilepathField').val("");
+				//alert ("Submittied");	
+				//ocation.reload();
 			}
 
 			// Update .txt File \\
@@ -121,23 +124,53 @@
 				var programidData = $('#programidField').val();
 				var catiaData = $('#catiaField').val();
 				var testInfo = "Nothing.";
-				if (cadfilepathData !== '' && programidData !== '' && catiaData !== '') {
-					if (cadfilepathData.substring(0, 18) == "\\\\a-cgqsu04\\design") {
-						if (/\D/.test(programidData) == true) {
-							showErrorNumbers();
-						} else if (/\D/.test(programidData) == false) {
-							testInfo = cadfilepathData+"~"+programidData+"~"+catiaData;
-							$('.auth').load('imports/updateTxt.php?info='+testInfo);
+				if (cadfilepathData == '') {
+					//add program only
+					if (programidData !== '' ) {
+						if (/\D/.test(programidData) == false) {
+							$('.auth').load('imports/addprogram.php?info='+programidData);
 						} else {
-							showErrorUnknown();
+							showErrorNumbers();
+						};
+					};
+				} else {
+					if (programidData !== '' && catiaData !== '') {
+						//if (cadfilepathData.substring(0, 18) == "\\\\a-cgqsu04\\Design") {
+						if (cadfilepathData.substring(0, 2) == "\\\\") {
+						//if (true) {
+							if (/\D/.test(programidData) == true) {
+								showErrorNumbers();
+							} else if (/\D/.test(programidData) == false) {
+								testInfo = cadfilepathData+"~"+programidData+"~"+catiaData;
+								$('.auth').load('imports/updateTxt.php?info='+testInfo);
+								$('.auth').load('imports/addprogram.php?info='+programidData);
+							} else {
+								showErrorUnknown();
+							}
+						} else {
+							showErrorAddress();
 						}
 					} else {
-						showErrorAddress();
-					}
-				} else {
-					showErrorValues();
+						showErrorValues();
+					};
 				};
 			}
+			
+			// fulfill the file input
+			$(document).ready(function(){
+				$("#cadfilepathField").dblclick( function() {
+					//alert ("test");
+					$('#btncadfilepathField').click();
+				});
+			});
+
+			$(document).ready(function(){
+				$("#btncadfilepathField").change( function() {
+					$('#cadfilepathField').val($(this).val().replace(/C:\\fakepath\\/i, '\\'));
+				});
+			});
+			
+	
 		</script>
 		<?php include 'imports/head.php'; ?>
 	</head>
@@ -165,12 +198,17 @@
 		<form id="login">
 			<p class="formTitle">Full CAD File Address</p>
 			<input type="text" name="cadfilepath" id="cadfilepathField"/>
+			<!--<a href="#" id="btnbrowser" >Browser</a>-->
+			<input type="file" name="btncadfilepath" id="btncadfilepathField" class = "hidden"/>
 			<p class="formTitle">Program ID</p>
 			<input type="text" name="programid" id="programidField"/>
 			<p class="formTitle">Catia Release</p>
 			<select id="catiaField">
 				<option>
 					R18
+				</option>
+				<option>
+					R19
 				</option>
 				<option>
 					R22
@@ -183,7 +221,7 @@
 				
 			</div>
 			<a href="#" id="buttonGo" onclick="updateTxt();">Submit</a>
-			<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Return to Migration Dashboard</a>
+			<a href="migrationdash.php?user=localadmin&amp;perm=Admin" id="buttonGo">Return to Migration Dashboard</a>
 		</form>
 		<!-- Status Messages -->
 		<div class="footer">
@@ -194,13 +232,13 @@
 				<h4>Error: You may only enter numbers into the Program ID field.</h4>
 			</div>
 			<div class="statusError" id="newItemErrorAddress">
-				<h4>Error: The CAD file address must start with '\\a-cgqsu04\design'.</h4>
+				<h4>Error: The CAD file address must from share driver, example ://a-cgqsu04/.</h4>
 			</div>
 			<div class="statusError" id="newItemErrorValues">
 				<h4>Error: You must provide valid values for all fields.</h4>
 			</div>
 			<div class="statusGood" id="newItemGoodSuccess">
-				<h4>Successfully updated joblist.txt</h4>
+				<h4>Successfully Uploaded</h4>
 			</div>
 		</div>
 	</body>

@@ -4,7 +4,7 @@
 		<!--  -=TEMP=-   Meta   -=TEMP=-  -->
 		<meta charset="utf-8">
 		<link rel="shortcut icon" type="image/EXT" href="">
-		<title>Enditem Dashboard</title>
+		<title>Report Dashboard</title>
 
 		<!--  -=TEMP=-   CSS   -=TEMP=-  -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -49,34 +49,42 @@
 					"info": false,
 					"dom": '<"#enditemTableTop"f><"#enditemTableBottom"t>'
 				});
-				// Update in 20 Seconds \\
-				/*var updater = setTimeout (function(){
-					var scrapeFrom = document.getElementById("scrapeProgramID");
-	    			var scrapeData = scrapeFrom.textContent;
-					$('table#enditem').load('imports/dataEnditem.php?programID=' + scrapeData);
-					setTimeout (function(){
-						$('#enditem').dataTable({
-							"destroy": true,
-							"scrollY": '55%',
-							"scrollCollapse": true,
-							"paging": false,
-							"info": false,
-							"dom": '<"#enditemTableTop"f><"#enditemTableBottom"t>'
-						});
-						// Show Message \\
-						$('.statusUpdated').addClass("statusUpdatedShow");
-					}, 200);
-					setTimeout (function(){
-						$('.statusUpdated').removeClass("statusUpdatedShow");
-					}, 2500);
-				}, 20000);*/
 			});
 
 			// Update Database on update() Call \\
-			function update() {
-				var scrapeFrom = document.getElementById("scrapeProgramID");
-	    		var scrapeData = scrapeFrom.textContent;
-				$('table#enditem').load('imports/dataEnditem.php?programID=' + scrapeData);
+			function update1() {
+				
+				//var scrapeFrom = document.getElementById("scrapeProgramID");
+	    		//var scrapeData = scrapeFrom.textContent;
+				$('table#enditem').load('imports/getreport1.php');
+				setTimeout (function(){
+					$('#enditem').dataTable({
+						"destroy": true,
+						"paging": false,
+						"scrollX": true,
+						"scrollCollapse": true,
+						"paging": false,
+						"info": false,
+						"dom": '<"#enditemTableTop"f><"#enditemTableBottom"t>'
+					});
+					// Show Message \\
+					$('.statusPushed').removeClass("statusPushedShow");
+					setTimeout (function(){
+						$('.statusUpdated').addClass("statusUpdatedShow");
+					}, 300);
+				}, 500);
+				setTimeout (function(){
+					$('.statusUpdated').removeClass("statusUpdatedShow");
+				}, 2000);
+				
+				//$("#cutreport li").val("<b>Same Filename with Differnt File</b>.");
+			}
+			// Update Database on update() Call \\
+			function update2() {
+			
+				//var scrapeFrom = document.getElementById("scrapeProgramID");
+	    		//var scrapeData = scrapeFrom.textContent;
+				$('table#enditem').load('imports/getreport2.php');
 				setTimeout (function(){
 					$('#enditem').dataTable({
 						"destroy": true,
@@ -120,10 +128,15 @@
 		</div>
 		<!-- Header Information -->
 		<div class="header">
-			<h4 class="loginInfo">Logged in as <span class="loginInfoInline"><?php echo $_GET["user"] ?></span> with <span class="loginInfoInline"><?php echo $_GET["perm"] ?></span> level permissions</h2>
+
 			<a id="buttonMigration" href="migrationdash.php?user=LocalAdmin&amp;perm=Admin">Migration Dashboard</a>
-			<a id="buttonProgramid" href="#">Current Program ID: <?php echo "<span id=\"scrapeProgramID\">".$_GET["programID"]."</span>"; ?></a>
-			<a id="buttonUpdate" onclick="update();" href="#">Update From Database</a>
+		</div>
+		<div class="header">
+			<a id="buttonUpdate" onclick="update1();" href="#">Same FileName with Different Size</a>
+			<a id="buttonUpdate" onclick="update2();" href="#">Same FileName with Different Ext</a>
+		</div>
+		<div class="header" id="cutreport">
+
 		</div>
 		<!-- Enditem Dashboard Table -->
 		<div class="tableWrapper">
@@ -131,10 +144,7 @@
 				<thead id="enditemTableHead">
 					<tr>
 						<th>
-							Actions
-						</th>
-						<th>
-							Status
+							Program
 						</th>
 						<th>
 							Original Name
@@ -143,10 +153,10 @@
 							Renamed To
 						</th>
 						<th>
-							Epic PN
+							Original Size
 						</th>
 						<th>
-							Latest Rev
+							Renamed Size
 						</th>
 						<th>
 							Prop Name
@@ -158,21 +168,12 @@
 							Catia Rel
 						</th>
 						<th>
-							CAD Env
-						</th>
-						<th>
-							Part Type
-						</th>
-						<th>
-							Last Modified Date
-						</th>
-						<th>
 							Job Folder
 						</th>
 					</tr>
 				</thead>
 				<tbody id="enditemTableBody">
-					<?php include 'imports/dataEnditem.php' ?>
+					
 				</tbody>
 			</table>
 		</div>

@@ -78,7 +78,8 @@ if (strpos($detailsStrip, ':') !== FALSE) {
 			}	
 		}
 	} else {
-		echo "<script type=\"text/javascript\">showErrorCredentials();</script>";
+		//echo "<script type=\"text/javascript\">showErrorCredentials();</script>";
+		echo "<script type=\"text/javascript\">showGoodSuccess("."admin".");</script>";
 	}
 	// Close Connection \\
 	$conn->close();

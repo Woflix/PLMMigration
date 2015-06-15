@@ -22,8 +22,10 @@ if ($conn3->connect_error) {
 
 // SQL Queries \\
 $sqlProgram = "SELECT programid, name, assignedto, actual_start_date, actual_complete_date, status, notes, id FROM program";
-$sqlEnditem1 = "SELECT count(jobfolder), programid FROM `enditem` WHERE status = 'Completed' GROUP by programid;";
-$sqlEnditem2 = "SELECT count(jobfolder), programid FROM `enditem` WHERE status = '' GROUP by programid;";
+$sqlEnditem1 = "SELECT count(jobfolder), programid FROM enditem WHERE status = 'Completed' GROUP by programid;";
+$sqlEnditem2 = "SELECT count(jobfolder), programid FROM enditem GROUP by programid;";
+//$sqlEnditem2 = "SELECT count(jobfolder), programid FROM enditem WHERE status != 'Completed' OR status IS NULL GROUP by programid;";
+//$sqlEnditem2 = "SELECT programid, name, assignedto, actual_start_date, actual_complete_date, status, notes, id FROM program";
 $result = $conn1->query($sqlProgram);
 $resultEnditem1 = $conn2->query($sqlEnditem1);
 $resultEnditem2 = $conn3->query($sqlEnditem2);
@@ -46,19 +48,24 @@ if ($resultEnditem1->num_rows > 0) {
 	}
 }
 
-// DEBUG -> print_r($cleanCompleted);
+ //print_r($cleanCompleted);
 
 // Check if SQL Query Returned Rows \\
 if ($resultEnditem2->num_rows > 0) {
 	while ($rowEnditem2 = $resultEnditem2->fetch_assoc()) {
-		// Push $cleanCompleted[] + SQL count(jobfolder) Data into Array \\
-		$cleanTotal[$rowEnditem2["programid"]] = $cleanCompleted[$rowEnditem2["programid"]]+$rowEnditem2["count(jobfolder)"];
-		// Calculate and Push Percentage Cleaned \\
-		$cleanPercentage[$rowEnditem2["programid"]] = ($cleanCompleted[$rowEnditem2["programid"]]/($rowEnditem2["count(jobfolder)"]+$cleanCompleted[$rowEnditem2["programid"]]))*100;
+		$cleanTotal[$rowEnditem2["programid"]] = $rowEnditem2["count(jobfolder)"];
+		if (!empty($cleanCompleted[$rowEnditem2["programid"]])) {
+			$cleanPercentage[$rowEnditem2["programid"]] = ($cleanCompleted[$rowEnditem2["programid"]]/($cleanTotal[$rowEnditem2["programid"]]))*100;
+		} else {
+			$cleanPercentage[$rowEnditem2["programid"]] =0;
+		}
 	}
+} else {
+	//print_r("None returned");
 }
 
-// DEBUG -> print_r($cleanPercentage);
+//print_r($cleanTotal);
+//print_r($cleanPercentage);
 
 // Check if SQL Query Returned Rows \\
 if ($result->num_rows > 0) {
@@ -72,7 +79,7 @@ if ($result->num_rows > 0) {
 			// Push Program ID from SQL into $programidCurrent \\
 			$programidCurrent = $row["programid"];
 			// Put Data in Table \\
-			echo "<tr><td id=\"programid:".$row["id"]."\" tabindex=".$counter."><a href=\"enditemdash.php?programID=".$row["programid"]."&user=Michael Leng&perm=Admin\" target=\"_blank\">".$row["programid"]."</a></td><td id=\"name:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+1).">".$row["name"]."</td><td id=\"assignedto:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+2).">".$row["assignedto"]."</td><td id=\"actual_start_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+3).">".$row["actual_start_date"]."</td><td id=\"actual_complete_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+4).">".$row["actual_complete_date"]."</td><td id=\"status:".$row["id"]."\" tabindex=".($counter+5).">".$row["status"]."</td><td id=\"itemqty:".$row["id"]."\" tabindex=".($counter+6).">";
+			echo "<tr><td id=\"programid:".$row["id"]."\" tabindex=".$counter."><a href=\"enditemdash.php?programID=".$row["programid"]."&user=LocalAdmin&perm=Admin\" target=\"_blank\">".$row["programid"]."</a></td><td id=\"name:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+1).">".$row["name"]."</td><td id=\"assignedto:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+2).">".$row["assignedto"]."</td><td id=\"actual_start_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+3).">".$row["actual_start_date"]."</td><td id=\"actual_complete_date:".$row["id"]."\" contenteditable=\"true\" tabindex=".($counter+4).">".$row["actual_complete_date"]."</td><td id=\"status:".$row["id"]."\" tabindex=".($counter+5).">".$row["status"]."</td><td id=\"itemqty:".$row["id"]."\" tabindex=".($counter+6).">";
 
 			// Check if Array $cleanTotal for Key $programidCurrent is Empty \\
 			if (!empty($cleanTotal[$programidCurrent])) {
@@ -84,7 +91,7 @@ if ($result->num_rows > 0) {
 			}
 
 			// Put Data in Table \\
-			echo "</td><td id=\"percentcleaned:".$row["id"]."\" tabindex=".($counter+7).">";
+			echo "</td><td id=\"percentcleaned-".$row["id"]."\" tabindex=".($counter+7).">";
 
 			// Check if Array $cleanPercentage for Key $programidCurrent is Empty \\
 			if (!empty($cleanPercentage[$programidCurrent])) {
@@ -128,6 +135,20 @@ $conn3->close();
 						}, 1300);
 					}
 				});
+			});
+		});
+	// Reinitialize onBlur Listener \\
+	$(function(){
+			//$("[id^=status]").click(function(){
+				$('[id^=status]').each(function() {
+				var field_userid = $(this).attr("id");
+				//alert (field_userid);
+				//alert (field_userid.split(":",2)[1]);
+				if ($('#percentcleaned-'+field_userid.split(":",2)[1]).text() == '100%') {
+					$(this).text("Completed");
+				} else {
+					}
+			//upload to db
 			});
 		});
 </script>

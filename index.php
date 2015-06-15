@@ -115,6 +115,7 @@
 			// Called on Login Button Press \\
 			function auth(){
 				var details = $('#usernameField').val()+":"+$('#passwordField').val();
+				
 				$('.auth').load('imports/authIntermediary.php?details='+details);
 			}
 		</script>
@@ -139,22 +140,23 @@
 		</div>
 		<!-- Login Title -->
 		<div class="loginHeader">
-			<h1>Migration Dashboard User Login</h1>
-			<h2>Please enter your credentials below</h2>
+			<h1>Welcome to Migration Dashboard</h1>
+			
 		</div>
 		<!-- Login Form -->
 		<form id="login">
-			<p class="formTitle">Username</p>
+			<!--<p class="formTitle">Username</p>
 			<input type="text" name="username" id="usernameField"/>
 			<p class="formTitle">Password</p>
-			<input type="password" name="password" id="passwordField"/>
+			<input type="password" name="password" id="passwordField"/>-->
 			<!-- Uncomment Below for Multiple Roles -->
 			<!--<p class="formTitle roleHidden">Select Role<br/> (When authentication is finished,<br/> this menu, or some options may<br/> not show up)</p>-->
-			<div class="auth">
+			<!--<div class="auth">
 				
-			</div>
-			<a href="#" id="buttonGo" onclick="auth();">Login</a>
-			<a href="migrationdash.php?user=Michael Leng&amp;perm=Admin" id="buttonGo">Go to Migration Dashboard (DEBUG)</a>
+			</div>-->
+			<!--<a href="#" id="buttonGo" onclick="auth();">Login</a>-->
+			<!--<a href="migrationdash.php?user=Admin&amp;perm=Admin" id="buttonGo">Login</a>-->
+			<a href="migrationdash.php?user=Admin&amp;perm=Admin" id="buttonGo">Go to Migration Dashboard</a>
 		</form>
 		<!-- Status Messages -->
 		<div class="footer loginFooter">

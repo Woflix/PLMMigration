@@ -1,7 +1,7 @@
 <?php
 // SQL Server Data \\
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "migration";
+$servername = "plmtrcsc5";
+$username = "jcmig";
+$password = "jcmig";
+$dbname = "jcmig";
 ?>

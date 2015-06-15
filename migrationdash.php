@@ -139,6 +139,7 @@
 			<h4 class="loginInfo">Logged in as <span class="loginInfoInline"><?php echo $_GET["user"] ?></span> with <span class="loginInfoInline"><?php echo $_GET["perm"] ?></span> level permissions</h2>
 			<a id="buttonUpdate" onclick="update();" href="#">Update From Database</a>
 			<a id="buttonUpdate" href="newitemdash.php">Add Item</a>
+			<a id="buttonUpdate" href="report.php">View Report</a>
 		</div>
 		<!-- Migration Dashboard Table -->
 		<div class="tableWrapper">
